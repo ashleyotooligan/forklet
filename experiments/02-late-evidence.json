@@ -1,0 +1,8 @@
+{
+  "seed": 17,
+  "horizon": 96,
+  "forkAt": 24,
+  "scenario": "latency",
+  "duration": 18,
+  "feeRate": 0.003
+}

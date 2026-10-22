@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forklet complete fork checkpoint",
+  "type": "object",
+  "required": ["schema", "config", "state"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "forklet/checkpoint/1"},
+    "config": {"$ref": "config.schema.json"},
+    "state": {
+      "type": "object",
+      "required": ["schema", "modelVersion", "seed", "tick", "model", "hidden", "memory", "cash", "units", "fees", "lastMove", "rng"],
+      "additionalProperties": false,
+      "properties": {
+        "schema": {"const": "forklet/state/1"},
+        "modelVersion": {"const": "forklet/rnn8/1"},
+        "seed": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+        "tick": {"type": "integer", "minimum": 1, "maximum": 254},
+        "rng": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+        "cash": {"type": "number", "minimum": 0, "maximum": 1000000000},
+        "units": {"type": "number", "minimum": 0, "maximum": 1000000000},
+        "fees": {"type": "number", "minimum": 0, "maximum": 1000000000},
+        "lastMove": {"enum": [-1, 0, 1]},
+        "hidden": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"type": "number", "minimum": -1, "maximum": 1}},
+        "memory": {
+          "type": "array", "maxItems": 6,
+          "items": {
+            "type": "object", "required": ["bulletin", "momentum", "reliability"], "additionalProperties": false,
+            "properties": {
+              "bulletin": {"type": "number", "minimum": -1, "maximum": 1},
+              "momentum": {"type": "number", "minimum": -1, "maximum": 1},
+              "reliability": {"type": "number", "minimum": 0, "maximum": 1}
+            }
+          }
+        },
+        "model": {
+          "type": "object", "required": ["input", "recurrent", "bias", "readout"], "additionalProperties": false,
+          "properties": {
+            "input": {"$ref": "#/$defs/matrix"},
+            "recurrent": {"$ref": "#/$defs/matrix"},
+            "bias": {"$ref": "#/$defs/vector"},
+            "readout": {"$ref": "#/$defs/vector"}
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "vector": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"type": "number", "minimum": -10, "maximum": 10}},
+    "matrix": {"type": "array", "minItems": 8, "maxItems": 8, "items": {"$ref": "#/$defs/vector"}}
+  },
+  "$comment": "Engine validation also checks state seed and tick against configuration."
+}

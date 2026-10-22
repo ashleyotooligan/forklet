@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f6f4ef">
+  <meta name="description" content="Forklet — one saved decision state, two information paths, an inspectable difference.">
+  <title>Forklet — a shared beginning</title>
+  <link rel="icon" href="assets/brand/forklet-agent.png">
+  <link rel="stylesheet" href="src/view/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <a class="wordmark" href="#" aria-label="Forklet home">forklet<span>01</span></a>
+    <p>One state. Two information paths.</p>
+    <span class="edition">Experiment edition / 01</span>
+  </header>
+  <main>
+    <section class="controls" aria-label="Experiment controls">
+      <label>Study<select id="scenario"></select></label>
+      <label>Seed<input id="seed" type="number" min="0" max="4294967295" value="17"></label>
+      <label>Fork after<input id="fork" type="number" min="1" max="94" value="24"></label>
+      <button id="run" type="button">Run comparison ↗</button>
+      <label class="focus">Inspect decision <output id="tick-output">32</output><input id="tick" type="range" min="25" max="96" value="32"></label>
+    </section>
+    <nav id="plates" class="plates" aria-label="Experiment plates"></nav>
+    <div class="sheet"><canvas id="figure" width="1440" height="1080" role="img" aria-describedby="caption" tabindex="0"></canvas></div>
+    <section class="under-sheet">
+      <div><h1 id="title">A shared beginning</h1><p id="caption"></p><p id="status" role="status" aria-live="polite">Loading the experiment…</p></div>
+      <div class="exports"><button id="png" type="button">Save figure</button><button id="checkpoint" type="button">Checkpoint JSON</button><button id="receipt" type="button">Replay receipt</button></div>
+    </section>
+  </main>
+  <footer class="page-footer"><span>Forklet 0.1.0 / Ashley Tooligan</span><span>Classical synthetic model. SOL is a paper unit, not a connected balance.</span></footer>
+  <script type="module" src="src/view/app.mjs"></script>
+</body>
+</html>

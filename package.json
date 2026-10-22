@@ -1,0 +1,20 @@
+{
+  "name": "forklet",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "One state. Two information paths. A reproducible decision-fork laboratory.",
+  "author": "Ashley Tooligan",
+  "license": "MIT",
+  "engines": {"node": ">=20"},
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "experiments": "node scripts/experiments.mjs",
+    "build": "node scripts/build.mjs",
+    "screenshots": "node scripts/capture.mjs",
+    "check": "node scripts/check.mjs",
+    "run:config": "node scripts/run.mjs",
+    "verify": "node scripts/checksums.mjs --verify"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forklet self-reported replay receipt",
+  "type": "object",
+  "required": ["schema", "synthetic", "engine", "stateIdType", "stateId", "config", "summary", "checkpoint"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"const": "forklet/receipt/1"},
+    "synthetic": {"const": true},
+    "engine": {"const": "classical recurrent toy model"},
+    "stateIdType": {"const": "FNV-1a debug checksum, not a cryptographic proof"},
+    "stateId": {"type": "string", "pattern": "^[0-9a-f]{8}$"},
+    "config": {"$ref": "config.schema.json"},
+    "checkpoint": {"$ref": "checkpoint.schema.json#/properties/state"},
+    "summary": {
+      "type": "object",
+      "required": ["seed", "scenario", "forkAt", "horizon", "stateId", "firstActionDifference", "disagreements", "comparedDecisions", "meanTV", "maxHiddenL2", "finalEquityA", "finalEquityB", "feesA", "feesB"],
+      "properties": {
+        "seed": {"type": "integer"}, "scenario": {"type": "string"}, "forkAt": {"type": "integer"}, "horizon": {"type": "integer"},
+        "stateId": {"type": "string"}, "firstActionDifference": {"type": ["integer", "null"]},
+        "disagreements": {"type": "integer", "minimum": 0}, "comparedDecisions": {"type": "integer", "minimum": 1},
+        "meanTV": {"type": "number", "minimum": 0, "maximum": 1}, "maxHiddenL2": {"type": "number", "minimum": 0},
+        "finalEquityA": {"type": "number", "minimum": 0}, "finalEquityB": {"type": "number", "minimum": 0},
+        "feesA": {"type": "number", "minimum": 0}, "feesB": {"type": "number", "minimum": 0}
+      }
+    }
+  }
+}

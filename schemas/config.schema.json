@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Forklet experiment configuration",
+  "type": "object",
+  "required": ["seed", "horizon", "forkAt", "scenario", "duration", "feeRate"],
+  "additionalProperties": false,
+  "properties": {
+    "seed": {"type": "integer", "minimum": 0, "maximum": 4294967295},
+    "horizon": {"type": "integer", "minimum": 16, "maximum": 256},
+    "forkAt": {"type": "integer", "minimum": 1, "maximum": 254},
+    "scenario": {"enum": ["bulletin", "latency", "reliability", "control"]},
+    "duration": {"type": "integer", "minimum": 1, "maximum": 256},
+    "feeRate": {"type": "number", "minimum": 0, "maximum": 0.05}
+  },
+  "$comment": "The engine additionally requires forkAt < horizon - 1 and duration <= horizon."
+}

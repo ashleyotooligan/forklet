@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use Forklet, cite this experimental software and its version."
+title: "Forklet: one state, two information paths"
+version: 0.1.0
+date-released: 2026-10-21
+type: software
+authors:
+  - family-names: Tooligan
+    given-names: Ashley
+license: MIT
+repository-code: "https://github.com/ashleyotooligan/forklet"
+abstract: "A classical synthetic paired-decision experiment with complete state copies, declared information interventions, recurrent state inspection and SOL-denominated paper resource accounting."
